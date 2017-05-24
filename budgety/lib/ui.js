@@ -54,7 +54,7 @@
 		};
 		selector.get('fieldType').addEventListener('change', function (e) {
 			// update fields to reflect state change
-			updateAllFields('', 'stateChange');
+			updateAllFields('%%%', 'stateChange');
 			selector.get('fieldDesc').focus();
 		});
 		getEl('body').addEventListener('click', function (e) {
@@ -203,11 +203,12 @@
 		});
 
 		// set field to focus for better UX
-		selector.forEach(function (value, key) {
+		for (let [key, value] of selector) {
 			if (value.classList.value.includes(klass)) {
 				value.focus();
+				break;
 			}
-		});
+		}
 
 		// return boolean for conditional statement
 		return allGood;
@@ -216,12 +217,15 @@
 	// +++++ UPDATE ALL FIELDS +++++ //
 	function updateAllFields(fieldToDiscard, action) {
 		selector.forEach(function (value, key, map) {
-			if (key.toLowerCase().includes(fieldToDiscard) === false) {
-				if (action == 'clear') {
-					value.value = '';
-					selector.get('fieldType').focus();
-				} else if (action == 'stateChange' && key.toLowerCase().includes('field')) {
-					value.classList.toggle('red');
+			if (!key.toLowerCase().includes(fieldToDiscard) && key.includes('field')) {
+				switch (action) {
+					case 'clear':
+						value.value = '';
+						selector.get('fieldType').focus();
+						break;
+					case 'stateChange':
+						value.classList.toggle('red');
+						break;
 				}
 			}
 		});
