@@ -32,7 +32,7 @@
 	const getEl = el => document.querySelector(el);
 
 	// create map of selectors for easy access
-	const selector = new Map([['users', getEl('.users')], ['stateSelectUser', getEl('.select__user')], ['stateAddUser', getEl('.new__user')], ['fieldSelectUser', getEl('.user__select')], ['ctaNewUser', getEl('.new__user__btn')], ['fieldAddUser', getEl('.user__name')], ['ctaAddUser', getEl('.add__user__btn')], ['availBudget', getEl('.budget__value')], ['incBudgetTotal', getEl('.budget__income--value')], ['incBudgetPercentage', getEl('.budget__income--percentage')], ['expBudgetTotal', getEl('.budget__expenses--value')], ['expBudgetPercentage', getEl('.budget__expenses--percentage')], ['fieldType', getEl('.add__type')], ['fieldDesc', getEl('.add__description')], ['fieldVal', getEl('.add__value')], ['ctaGo', getEl('.ion-ios-checkmark-outline')], ['incList', getEl('.income__list')], ['expList', getEl('.expenses__list')]]);
+	const selector = new Map([['users', getEl('.users')], ['stateSelectUser', getEl('.select__user')], ['stateAddUser', getEl('.new__user')], ['fieldSelectUser', getEl('.user__select')], ['ctaNewUser', getEl('.new__user__btn')], ['ctaDeleteUser', getEl('.user__delete__btn')], ['fieldAddUser', getEl('.user__name')], ['ctaAddUser', getEl('.add__user__btn')], ['availBudget', getEl('.budget__value')], ['incBudgetTotal', getEl('.budget__income--value')], ['incBudgetPercentage', getEl('.budget__income--percentage')], ['expBudgetTotal', getEl('.budget__expenses--value')], ['expBudgetPercentage', getEl('.budget__expenses--percentage')], ['fieldType', getEl('.add__type')], ['fieldDesc', getEl('.add__description')], ['fieldVal', getEl('.add__value')], ['ctaGo', getEl('.ion-ios-checkmark-outline')], ['incList', getEl('.income__list')], ['expList', getEl('.expenses__list')]]);
 
 	// +++++ INIT +++++ //
 	function init() {
@@ -69,6 +69,9 @@
 		selector.get('ctaNewUser').addEventListener('click', function (e) {
 			updateUserDisplayState('add');
 			selector.get('fieldAddUser').focus();
+		});
+		selector.get('ctaDeleteUser').addEventListener('click', function (e) {
+			removeUser();
 		});
 		selector.get('fieldAddUser').addEventListener('keypress', function (e) {
 			// if user hits enter in this input field
@@ -163,6 +166,17 @@
 		}
 	}
 
+	// +++++ REMOVE USER +++++ //
+	function removeUser() {
+		let currUser = getValues().user;
+		(0, _data.removeDataUser)(currUser, function (newUser) {
+			// remove user from dropdown
+			removeUserDropDownOptions(currUser);
+			// if returned new user exists then update user, else change display state to add a new user
+			newUser !== null ? updateUser(newUser, true) : updateUserDisplayState('add');
+		});
+	}
+
 	// +++++ ADD SELECT OPTIONS +++++ //
 	function addUserDropDownOptions(user) {
 		// add user to dropdown
@@ -170,6 +184,14 @@
 		opt.value = user;
 		opt.innerHTML = user;
 		selector.get('fieldSelectUser').appendChild(opt);
+	}
+
+	// +++++ REMOVE SELECT OPTIONS +++++ //
+	function removeUserDropDownOptions(user) {
+		// remove user from dropdown
+		for (let opt of selector.get('fieldSelectUser')) {
+			opt.value === user ? opt.remove() : null;
+		}
 	}
 
 	// +++++ SELECT ACTIVE USER +++++ //
@@ -308,7 +330,7 @@
                 	<div class="item__value">${formatNumber(domValues.val, domValues.type === 'inc')}</div>
                 	<div class="item__percentage">%</div>
                 	<div class="item__delete">
-                    	<button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button>
+                    	<button class="btn delete item__delete--btn"><i class="ion-ios-close-outline"></i></button>
                 	</div>
             	</div>
         	</div>

@@ -18,7 +18,7 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.removeDataItem = exports.addDataItem = exports.addDataUser = exports.getUserBudget = exports.setActiveUser = exports.storeLocalData = exports.getLocalData = undefined;
+	exports.removeDataItem = exports.addDataItem = exports.removeDataUser = exports.addDataUser = exports.getUserBudget = exports.setActiveUser = exports.storeLocalData = exports.getLocalData = undefined;
 
 
 	// ---------- DATA CONTROLLER ---------- //
@@ -53,6 +53,20 @@
 		users.set(name, new _classes.User(name, new _classes.Budget(types), active));
 		if (cb) {
 			cb(users.get(name));
+		}
+	}
+
+	// +++++ REMOVE DATA USER +++++ //
+	function removeDataUser(name, cb) {
+		users.delete(name);
+		let nextUser;
+		try {
+			nextUser = users.entries().next().value[1].name;
+		} catch (err) {
+			nextUser = null;
+		}
+		if (cb) {
+			cb(nextUser);
 		}
 	}
 
@@ -143,6 +157,7 @@
 	exports.setActiveUser = setActiveUser;
 	exports.getUserBudget = getUserBudget;
 	exports.addDataUser = addDataUser;
+	exports.removeDataUser = removeDataUser;
 	exports.addDataItem = addDataItem;
 	exports.removeDataItem = removeDataItem;
 });

@@ -44,6 +44,19 @@ function addDataUser(name, types, active, cb) {
 }
 
 
+// +++++ REMOVE DATA USER +++++ //
+function removeDataUser(name, cb) {
+	users.delete(name);
+	let nextUser;
+	try { 
+		nextUser = users.entries().next().value[1].name;
+	} catch(err) { 
+		nextUser = null;
+	}
+	if (cb) { cb(nextUser); }
+}
+
+
 // +++++ ADD DATA ITEM +++++ //
 function addDataItem(itemType, domValues, cbDisplayChanges) {
 	// set current user to correct map item
@@ -131,6 +144,6 @@ function getLocalData(cb) {
 
 
 // !!!!!!!!!!!!!!!!!!!! EXPORTS !!!!!!!!!!!!!!!!!!!! //
-export { getLocalData, storeLocalData, setActiveUser, getUserBudget, addDataUser, addDataItem, removeDataItem }; 
+export { getLocalData, storeLocalData, setActiveUser, getUserBudget, addDataUser, removeDataUser, addDataItem, removeDataItem }; 
 
 

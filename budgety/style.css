@@ -67,6 +67,23 @@ body {
 .new__user.active {
     transform: translateY(0%);
 }
+.select__user .new__user__btn {
+    padding-right: 20px;
+}
+.select__user .user__delete__btn {
+    opacity: 0;
+    position: absolute; 
+    top: 50%;
+    right: 20px;
+    z-index: -1;
+    transform: translateY(-50%);
+    transition: all .3s linear 0s; 
+}
+.select__user:hover .user__delete__btn { 
+    opacity: 1;
+    transform: translate(25px, -50%); 
+    z-index: 1;
+}
 
 
 /* BUDGET */
@@ -262,14 +279,14 @@ h2 {
     text-align: center;
 }
 
-.income .item__value,
-.income .item__delete--btn {
+/*.income .item__delete--btn */
+.income .item__value {
     color: #28B9B5;
 }
 
 .expenses .item__value,
 .expenses .item__percentage,
-.expenses .item__delete--btn {
+.delete {
     color: #FF5049;
 }
 
@@ -279,18 +296,10 @@ h2 {
 }
 
 .item__delete--btn {
-    font-size: 22px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    display: inline-block;
-    vertical-align: middle;
-    line-height: 1;
     display: none;
+    font-size: 22px;
+    line-height: 1;
 }
-
-.item__delete--btn:focus { outline: none; }
-.item__delete--btn:active { transform: translateY(2px); }
 
 .item:hover .item__delete--btn { display: block; }
 .item:hover .item__value { transform: translateX(-20px); }
@@ -311,7 +320,7 @@ h2 {
 
 /**********************************************
 *** MEDIA QUERY
-**********************************************/
+*********************************************/
 
 @media only screen and (max-width: 740px) {
     .users { position: relative; top: 0px; left: 0px; text-align: center; margin-bottom: 20px; }

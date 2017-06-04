@@ -2,7 +2,7 @@
 
 
 // !!!!!!!!!!!!!!!!!!!! IMPORTS !!!!!!!!!!!!!!!!!!!! //
-import { getLocalData, storeLocalData, setActiveUser, getUserBudget, addDataUser, addDataItem, removeDataItem } from 'data'; 
+import { getLocalData, storeLocalData, setActiveUser, getUserBudget, addDataUser, removeDataUser, addDataItem, removeDataItem } from 'data'; 
 
  
 
@@ -23,6 +23,7 @@ const selector = new Map([
 	['stateAddUser', getEl('.new__user')],
 	['fieldSelectUser', getEl('.user__select')],
 	['ctaNewUser', getEl('.new__user__btn')],
+	['ctaDeleteUser', getEl('.user__delete__btn')],
 	['fieldAddUser', getEl('.user__name')],
 	['ctaAddUser', getEl('.add__user__btn')],
 	['availBudget', getEl('.budget__value')],
@@ -75,6 +76,9 @@ function setEvents() {
 	selector.get('ctaNewUser').addEventListener('click', function(e) {
 		updateUserDisplayState('add');
 		selector.get('fieldAddUser').focus();
+	});
+	selector.get('ctaDeleteUser').addEventListener('click', function(e) {
+		removeUser();
 	});
 	selector.get('fieldAddUser').addEventListener('keypress', function(e) {
 		// if user hits enter in this input field
@@ -169,6 +173,18 @@ function addUser() {
 }
 
 
+// +++++ REMOVE USER +++++ //
+function removeUser() {
+	let currUser = getValues().user;
+	removeDataUser(currUser, function(newUser) {
+		// remove user from dropdown
+		removeUserDropDownOptions(currUser);
+		// if returned new user exists then update user, else change display state to add a new user
+		newUser !== null ? updateUser(newUser, true) : updateUserDisplayState('add');
+	});
+}
+
+
 // +++++ ADD SELECT OPTIONS +++++ //
 function addUserDropDownOptions(user) {
 	// add user to dropdown
@@ -176,6 +192,15 @@ function addUserDropDownOptions(user) {
 	opt.value = user;
 	opt.innerHTML = user;
 	selector.get('fieldSelectUser').appendChild(opt);
+}
+
+
+// +++++ REMOVE SELECT OPTIONS +++++ //
+function removeUserDropDownOptions(user) {
+	// remove user from dropdown
+	for (let opt of selector.get('fieldSelectUser')) {
+		opt.value === user ? opt.remove() : null;
+	}
 }
 
 
@@ -323,7 +348,7 @@ function template(domValues) {
                 	<div class="item__value">${formatNumber(domValues.val, domValues.type === 'inc')}</div>
                 	<div class="item__percentage">%</div>
                 	<div class="item__delete">
-                    	<button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button>
+                    	<button class="btn delete item__delete--btn"><i class="ion-ios-close-outline"></i></button>
                 	</div>
             	</div>
         	</div>
