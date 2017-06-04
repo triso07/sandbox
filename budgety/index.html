@@ -8,8 +8,19 @@
         <title>Budgety</title>
     </head>
     <body>
-        
+
+
         <div class="top">
+            <div class="users">
+                <div class="select__user">
+                    <select class="user__select"></select>
+                    <button class="btn new__user__btn" title="Create New User"><i class="ion-android-person"></i></button>
+                </div>
+                <div class="new__user active">
+                    <input class="user__name" type="text" placeholder="Add user" />
+                    <button class="btn add__user__btn"><i class="ion-ios-plus"></i></button>
+                </div>
+            </div>
             <div class="budget">
                 <div class="budget__title">
                     Available Budget for the <span class="budget__title--month">Month</span>:
@@ -49,7 +60,7 @@
                     </span>
                     <span class="group">
                         <input type="number" class="add__value" placeholder="Value">
-                        <button class="add__btn"><i class="ion-ios-checkmark-outline"></i></button>
+                        <button class="btn add__btn"><i class="ion-ios-checkmark-outline"></i></button>
                     </span>
                 </div>
             </div>

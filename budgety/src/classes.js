@@ -1,4 +1,17 @@
+'use strict';
+
+
 // ---------- CLASSES ---------- //
+
+
+// +++++ USER +++++ //
+class User {
+	constructor(name, budget, active) {
+		this.name = name;
+		this.budget = budget;
+		this.active = active;
+	}
+}
 
 
 // +++++ BUDGET +++++ //
@@ -72,6 +85,6 @@ function calculatePercentage(x, y) {
 
 
 // !!!!!!!!!!!!!!!!!!!! EXPORTS !!!!!!!!!!!!!!!!!!!! //
-export { Budget, BudgetItem }; 
+export { User, Budget, BudgetItem }; 
 
 

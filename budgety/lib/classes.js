@@ -1,6 +1,6 @@
 (function (global, factory) {
 	if (typeof define === "function" && define.amd) {
-		define(["exports"], factory);
+		define(['exports'], factory);
 	} else if (typeof exports !== "undefined") {
 		factory(exports);
 	} else {
@@ -11,13 +11,23 @@
 		global.classes = mod.exports;
 	}
 })(this, function (exports) {
-	"use strict";
+	'use strict';
+
+	// ---------- CLASSES ---------- //
+
+
+	// +++++ USER +++++ //
 
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	// ---------- CLASSES ---------- //
-
+	class User {
+		constructor(name, budget, active) {
+			this.name = name;
+			this.budget = budget;
+			this.active = active;
+		}
+	}
 
 	// +++++ BUDGET +++++ //
 	class Budget {
@@ -85,6 +95,7 @@
 	}
 
 	// !!!!!!!!!!!!!!!!!!!! EXPORTS !!!!!!!!!!!!!!!!!!!! //
+	exports.User = User;
 	exports.Budget = Budget;
 	exports.BudgetItem = BudgetItem;
 });
