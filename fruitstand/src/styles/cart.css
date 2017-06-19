@@ -1,0 +1,37 @@
+/* *************** ---------- HELPERS ---------- *************** */
+/* ----- FUNCTIONS ----- */
+/* ----- VARS ----- */
+/* base pixel size (used to calculate EM values) */
+/* sets standard vertical spacing from give PX value to EMs */
+/* ----- MIXINS ----- */
+/* *************** ---------- CART ---------- *************** */
+#cart .btn.text {
+  color: #fff; }
+
+#cart #cart-head {
+  color: #fff;
+  font-size: 1.125em;
+  line-height: 1.44444em;
+  /* divide lineHeight argument by fontSize argument since ems are relative */
+  margin-bottom: 0.625em;
+  text-align: center; }
+
+#cart #cart-body {
+  /* see cartItem.scss */ }
+
+#cart #cart-foot {
+  border-top: 2px solid #fff;
+  margin-top: 1.5625em;
+  padding-top: 0.9375em;
+  padding-right: 0.9375em;
+  text-align: right;
+  transform: translateX(11%);
+  width: 90%; }
+  #cart #cart-foot .cart-total {
+    color: #fff;
+    font-size: 1em;
+    font-weight: bold; }
+  #cart #cart-foot .btn.empty {
+    font-size: 0.75em; }
+  #cart #cart-foot .btn.confirm {
+    margin-top: 0.625em; }

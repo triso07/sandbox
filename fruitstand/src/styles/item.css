@@ -1,0 +1,52 @@
+/* *************** ---------- HELPERS ---------- *************** */
+/* ----- FUNCTIONS ----- */
+/* ----- VARS ----- */
+/* base pixel size (used to calculate EM values) */
+/* sets standard vertical spacing from give PX value to EMs */
+/* ----- MIXINS ----- */
+/* *************** ---------- ITEM ---------- *************** */
+.item {
+  background: #fff;
+  border: 2px solid #32c996;
+  display: inline-block;
+  margin: 0 1.5625em 1.5625em 0;
+  padding: 1.5625em 1.875em;
+  text-align: center;
+  vertical-align: top;
+  /*width: 27%;*/
+  width: 16.5625em;
+  transition: all 0.2s linear 0s; }
+  .item:hover {
+    background-color: #e9fdf6;
+    /*transform: scale(1.02);*/ }
+  .item .item-picture {
+    margin-bottom: 0.3125em;
+    min-height: 11.5625em;
+    line-height: 11.5625em;
+    overflow: hidden;
+    width: 100%; }
+    .item .item-picture img {
+      height: auto;
+      vertical-align: middle;
+      width: 80%; }
+  .item .item-details .item-name {
+    margin-bottom: 0.9375em;
+    text-transform: capitalize; }
+    .item .item-details .item-name h3 {
+      font-weight: normal; }
+  .item .item-details .item-info {
+    margin-bottom: 1.5625em; }
+    .item .item-details .item-info .item-price {
+      font-size: 2.1875em; }
+    .item .item-details .item-info .item-price {
+      margin-right: 0.125em; }
+    .item .item-details .item-info .item-quantity {
+      font-size: 1.25em;
+      text-transform: capitalize; }
+  .item .item-ctas button {
+    width: 100%; }
+
+/* ---------- MEDIA QUERIES ---------- */
+@media only screen and (max-width: 1030px) {
+  .item {
+    margin: 0 0.5625em 0.5625em 0 !important; } }

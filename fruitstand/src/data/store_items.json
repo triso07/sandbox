@@ -1,0 +1,38 @@
+[
+  {
+    "itemName": "banana",
+    "imgSrc": "banana.png",
+    "price": 1.25,
+    "quantityRemaining": 10
+  },
+  {
+    "itemName": "apple",
+    "imgSrc": "apple.png",
+    "price": 2.50,
+    "quantityRemaining": 5
+  },
+  {
+    "itemName": "raspberry",
+    "imgSrc": "raspberry.png",
+    "price": 4.00,
+    "quantityRemaining": 2
+  },
+  {
+    "itemName": "kiwi",
+    "imgSrc": "kiwi.png",
+    "price": 3.33,
+    "quantityRemaining": 15
+  },
+  {
+    "itemName": "peach",
+    "imgSrc": "peach.png",
+    "price": 4.75,
+    "quantityRemaining": 1
+  },
+  {
+    "itemName": "strawberries",
+    "imgSrc": "strawberry.png",
+    "price": 2.05,
+    "quantityRemaining": 3
+  }
+]

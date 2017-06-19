@@ -1,0 +1,41 @@
+@import "utils.scss";
+
+
+
+/* *************** ---------- RESETS ---------- *************** */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  font-size: #{$fontBaseline}px;
+}
+
+
+
+
+
+/* *************** ---------- LAYOUT ---------- *************** */
+
+
+/* ---------- SIZER ---------- */
+/* used to control width of content in multiple containing elements (header, article, footer, etc) */
+.sizer {
+  margin: 0 auto;
+  /*width: toUnit(1400);*/
+  width: 95%;
+}
+
+
+
+
+
+/* ---------- MEDIA QUERIES ---------- */
+@media only screen and (max-width: 1225px) {
+  body { font-size: 95%; }
+}
+@media only screen and (max-width: 1155px) {
+  body { font-size: 85%; }
+}

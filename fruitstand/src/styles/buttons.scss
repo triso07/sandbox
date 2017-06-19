@@ -1,0 +1,43 @@
+@import "utils.scss";
+
+
+
+/* *************** ---------- BUTTONS ---------- *************** */
+button.btn {
+  border: 0;
+  cursor: pointer;
+  text-align: center;
+  @include transition(background-color);
+  &.round {
+    border-radius: 4px;
+    @include fontSizeLineHeight(20, 32);
+    padding: 0 toUnit(15) toUnit(2);
+    &.type-1 {
+      background-color: $colorMain;
+      &:hover {
+        background-color: #5feabb;
+      }
+    }
+    &.type-2 {
+      background-color: $colorHighlight;
+      font-weight: bold;
+      &:hover {
+        background-color: #fff;
+      }
+    }
+  }
+  &.text {
+    background: transparent;
+  }
+  &.icon {
+    background-color: #fff;
+    @include fontSizeLineHeight(14, 14);
+    width: toUnit(26);
+    height: toUnit(18);
+  }
+}
+
+
+
+
+

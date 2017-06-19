@@ -1,0 +1,19 @@
+@import "utils.scss";
+
+
+
+/* *************** ---------- MAIN CONTENT ---------- *************** */
+#main {
+  .sizer {
+    display: table; 
+  }
+  #content {
+    display: table-cell;
+    padding-top: $vSpace;
+    padding-right: toUnit(0);
+    vertical-align: top;
+    width: 77%;
+    /* see item.scss */
+  }
+}
+

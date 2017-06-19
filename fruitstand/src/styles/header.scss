@@ -1,0 +1,17 @@
+@import "utils.scss";
+
+
+
+/* *************** ---------- HEADER ---------- *************** */
+header {
+  border-bottom: 8px solid $colorMain;
+  h1 {
+    background-color: $colorMain;
+    color: #fff;
+    display: inline-block;
+    @include fontSizeLineHeight(35, 40);
+    font-weight: bold;
+    margin-top: toUnit(15);
+    padding: toUnit(1.5) toUnit(20);
+  }
+}

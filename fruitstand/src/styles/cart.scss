@@ -1,0 +1,49 @@
+@import "utils.scss";
+
+
+
+/* *************** ---------- CART ---------- *************** */
+#cart {
+  .btn.text {
+    color: #fff;
+  }
+  #cart-head {
+    color: #fff;
+    @include fontSizeLineHeight(18, 26);
+    margin-bottom: toUnit(10);
+    text-align: center;
+  }
+  #cart-body {
+    /* see cartItem.scss */
+  }
+  #cart-foot {
+    border-top: 2px solid #fff;
+    margin-top: toUnit(25);
+    padding-top: toUnit(15);
+    padding-right: toUnit(15);
+    text-align: right;
+    transform: translateX(11%);
+    width: 90%;
+    .cart-total {
+      color: #fff;
+      font-size: toUnit(16);
+      font-weight: bold;
+    }
+    .btn.empty {
+      font-size: toUnit(12);
+    }
+    .btn.confirm { 
+      margin-top: toUnit(10);
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,32 @@
+/* *************** ---------- HELPERS ---------- *************** */
+
+
+/* ----- FUNCTIONS ----- */
+@function toUnit($px, $contextPX:$fontBaseline) {
+  /* contextPX has a default set to fontBaseline variable if no argument is passed */
+  @return #{$px/$contextPX}em; /* calc EM value of given PX */
+}
+
+
+/* ----- VARS ----- */
+$fontBaseline: 16; /* base pixel size (used to calculate EM values) */
+$colorMain: #32c996;
+$colorHighlight: #c0efdf;
+$vSpace: toUnit(25); /* sets standard vertical spacing from give PX value to EMs */
+
+
+/* ----- MIXINS ----- */
+@mixin fontSizeLineHeight($fontPX, $linePX) {
+	font-size: toUnit($fontPX);
+	line-height: toUnit($linePX, $fontPX); /* divide lineHeight argument by fontSize argument since ems are relative */
+}
+@mixin imageAutoHeight($w) {
+	/* scale image appropriately for responsive design */
+	width: $w;
+	height: auto;
+}
+@mixin transition($el:all, $speed:.2s, $type:linear, $delay:0s) {
+	transition: $el $speed $type $delay;
+}
+
+

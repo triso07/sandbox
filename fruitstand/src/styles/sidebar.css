@@ -1,0 +1,13 @@
+/* *************** ---------- HELPERS ---------- *************** */
+/* ----- FUNCTIONS ----- */
+/* ----- VARS ----- */
+/* base pixel size (used to calculate EM values) */
+/* sets standard vertical spacing from give PX value to EMs */
+/* ----- MIXINS ----- */
+/* *************** ---------- SIDEBAR ---------- *************** */
+#sidebar {
+  background: #32c996;
+  display: table-cell;
+  padding: 1.5625em 0;
+  vertical-align: top;
+  width: 23%; }
