@@ -11,34 +11,27 @@ button.btn {
   outline: none;
   text-align: center;
   transition: background-color 0.2s linear 0s; }
-
-button.btn.round {
-  border-radius: 4px;
-  font-size: 1.25em;
-  line-height: 1.6em;
-  /* divide lineHeight argument by fontSize argument since ems are relative */
-  padding: 0 0.9375em 0.125em; }
-
-button.btn.round.type-1 {
-  background-color: #32c996; }
-
-button.btn.round.type-1:hover {
-  background-color: #5feabb; }
-
-button.btn.round.type-2 {
-  background-color: #c0efdf;
-  font-weight: bold; }
-
-button.btn.round.type-2:hover {
-  background-color: #fff; }
-
-button.btn.text {
-  background: transparent; }
-
-button.btn.icon {
-  background-color: #fff;
-  font-size: 0.875em;
-  line-height: 1em;
-  /* divide lineHeight argument by fontSize argument since ems are relative */
-  width: 1.625em;
-  height: 1.125em; }
+  button.btn.round {
+    border-radius: 4px;
+    font-size: 1.25em;
+    line-height: 1.6em;
+    /* divide lineHeight argument by fontSize argument since ems are relative */
+    padding: 0 0.9375em 0.125em; }
+    button.btn.round.type-1 {
+      background-color: #32c996; }
+      button.btn.round.type-1:hover {
+        background-color: #5feabb; }
+    button.btn.round.type-2 {
+      background-color: #c0efdf;
+      font-weight: bold; }
+      button.btn.round.type-2:hover {
+        background-color: #fff; }
+  button.btn.text {
+    background: transparent; }
+  button.btn.icon {
+    background-color: #fff;
+    font-size: 0.875em;
+    line-height: 1em;
+    /* divide lineHeight argument by fontSize argument since ems are relative */
+    width: 1.625em;
+    height: 1.125em; }
