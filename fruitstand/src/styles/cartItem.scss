@@ -7,7 +7,7 @@
   background-color: rgba(255,255,255, .4);
   margin-bottom: toUnit(15);
   padding: toUnit(10) toUnit(20);
-  @include transition();
+  @include transition(background-color);
   &:hover {
     background-color: rgba(255,255,255, .5);
   }
@@ -24,6 +24,7 @@
     }
   }
   .cart-item-quantity {
+    white-space: nowrap;
     .quantity-value,
     .btn.icon {
       display: inline-block;
@@ -36,6 +37,11 @@
   }
   .group {
     position: relative;
+  }
+  .cart-item-values {
+    .clump {
+      white-space: nowrap;
+    }
   }
   .cart-item-cta {
     position: absolute;

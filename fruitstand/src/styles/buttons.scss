@@ -6,6 +6,7 @@
 button.btn {
   border: 0;
   cursor: pointer;
+  outline: none;
   text-align: center;
   @include transition(background-color);
   &.round {

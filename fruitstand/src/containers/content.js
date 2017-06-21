@@ -4,6 +4,7 @@ import Item from '../components/item.js';
 import '../styles/content.css';
 
 
+
 /* --------------- CONTENT --------------- */
 function Content(props) {
 	return (
@@ -12,6 +13,7 @@ function Content(props) {
   		</section>
 	);
 }
+
 
 
 /* ++++++++++ --------------- EXPORTS --------------- ++++++++++ */

@@ -8,7 +8,6 @@ import '../styles/buttons.css';
 
 /* --------------- CART ITEM --------------- */
 function CartItem(props) {
-	//console.log(props);
 	const item = props.itemToAdd;
 	return (
 		<div className="cart-item" id={`cart-item-${item.itemName.toLowerCase()}`}>
@@ -24,7 +23,7 @@ function CartItem(props) {
   			</div>
   			<div className="group">
   				<span className="cart-item-values">
-  					@ <span className="item-price">{Utils.formatNumber(item.price)}</span> each = <span className="item-total">{Utils.formatNumber(item.totalItemPrice)}</span>
+  					@ <span className="item-price">{Utils.formatNumber(item.price)}</span> <span className="clump">each = <span className="item-total">{Utils.formatNumber(item.totalItemPrice)}</span></span>
   				</span>
   				<span className="cart-item-cta">
   					<button className="btn text delete" onClick={props.removeItem.bind(this, item)}>Delete</button>
@@ -33,6 +32,7 @@ function CartItem(props) {
 		</div>
 	);
 }
+
 
 
 /* ++++++++++ --------------- EXPORTS --------------- ++++++++++ */

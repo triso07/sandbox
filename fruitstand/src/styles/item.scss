@@ -11,16 +11,25 @@
   padding: $vSpace toUnit(30);
   text-align: center;
   vertical-align: top;
-  /*width: 27%;*/
-  width: toUnit(265);
-  @include transition();
+  width: 30.5%;
+  /*width: toUnit(282);*/
+  @include transition(transform);
+  &.out-of-stock {
+    @include transition(opacity);
+    border-color: $colorDisable;
+    opacity: .5;
+    pointer-events: none;
+    button.btn.round {
+      /*background-color: $colorDisable;*/
+      opacity: 0;
+    }
+  }
   &:hover {
-    background-color: #e9fdf6;
-    /*transform: scale(1.02);*/
+    transform: scale(1.04);
   }
   .item-picture {
     margin-bottom: toUnit(5);
-    min-height: toUnit(185);
+    height: toUnit(205);
     line-height: toUnit(185);
     overflow: hidden;
     width: 100%;
@@ -54,15 +63,6 @@
   }
   .item-ctas button {
     width: 100%;
-  }
-}
-
-
-
-/* ---------- MEDIA QUERIES ---------- */
-@media only screen and (max-width: 1030px) {
-  .item {
-    margin: 0 toUnit(9) toUnit(9) 0 !important;
   }
 }
 

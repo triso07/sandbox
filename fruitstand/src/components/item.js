@@ -9,8 +9,9 @@ import '../styles/buttons.css';
 // +++++ TEMPLATE +++++ //
 function Template(props) {
 	const item = props.itemData;
+	const stockType = item.quantityRemaining > 0 ? 'in-stock' : 'out-of-stock';
 	return (
-		<div className="item" id={`item-${item.itemName.toLowerCase()}`}>
+		<div className={`item ${stockType}`} id={`item-${item.itemName.toLowerCase()}`}>
 			<div className="item-picture">
 				<img src={`images/fruit/${item.imgSrc}`} alt={item.itemName} />
 			</div>
@@ -31,23 +32,16 @@ function Template(props) {
 }
 
 
+
 /* --------------- ITEM --------------- */
-class Item extends React.Component {
-	constructor() {
-		super();
-	}
-	render() {
-		return (
-			<div className="items">
-				{this.props.items.map(currItem => {
-					if (currItem.quantityRemaining > 0) {
-						return <Template key={currItem.itemName} itemData={currItem} onClick={this.props.handleAddToCart.bind(this, currItem)} />
-					}
-				})}
-			</div>
-		);
-	}
+function Item(props) {
+	return (
+		<div className="items">
+			{props.items.map(currItem => <Template key={currItem.itemName} itemData={currItem} onClick={props.handleAddToCart.bind(this, currItem)} />)}
+		</div>
+	);
 }
+
 
 
 /* ++++++++++ --------------- EXPORTS --------------- ++++++++++ */

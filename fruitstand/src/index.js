@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import Items from './data/store_items.json';
 import Header from './containers/header.js';
 import Content from './containers/content.js';
-import Sidebar from './containers/aside.js';
+import Sidebar from './containers/sidebar.js';
 
 import './styles/index.css';
 
@@ -16,19 +16,37 @@ class Container extends React.Component {
 	constructor() {
 		super();
 		this.state = {
+			items: Items,
 			itemToAdd: {}
 		}
 		this.handleAddToCart = this.handleAddToCart.bind(this);
+		this.updateGridItems = this.updateGridItems.bind(this);
 	}
 	handleAddToCart(item) {
-		console.log('---------- add item ----------');
-		console.log(item);
-		// need to keep track of quantity in cart so we stop re-rendering the page when we can no longer add an item
+		// passed down to grid items onclick as callback
+		//console.log('---------- add item ----------');
 		this.setState({
-			itemToAdd: item
+			itemToAdd: Object.assign({}, item) // create instance of this object so as not to mutate actual object data
+		});
+	}
+	updateGridItems(...items) {
+		// converting parameters to array using spread operator (done because items pass back may be an array or single object)
+		//console.log('--------- update items --------');
+		// create instance of items array
+		let revisedItems = Object.assign([], this.state.items);
+		// if a passed item exists in original items (checking by prop name), recalculate orig items remaining quantity
+		items.forEach(passedItem => {
+			revisedItems.forEach(revisedItem => {
+				revisedItem.itemName === passedItem.itemName ? revisedItem.quantityRemaining -= passedItem.quantityInCart : null;
+			});
+		});
+		// now set state to render
+		this.setState({
+			items: revisedItems
 		});
 	}
 	render() {
+		//console.log('**********------- render all -------**********');
 		return (
 		  <div id="container">
 		    <header id="header">
@@ -38,14 +56,15 @@ class Container extends React.Component {
 		    </header>
 		    <article id="main">
 		    	<div className="sizer">
-			      <Content items={Items} handleAddToCart={this.handleAddToCart} />
-			      <Sidebar itemToAdd={this.state.itemToAdd} />
+			      <Content items={this.state.items} handleAddToCart={this.handleAddToCart} />
+			      <Sidebar itemToAdd={this.state.itemToAdd} updateGridItems={this.updateGridItems} />
 			    </div>
 		    </article>
 		  </div>
 		);
 	}
 }
+
 
 
 /* ++++++++++ --------------- REACT DOM RENDER --------------- ++++++++++ */

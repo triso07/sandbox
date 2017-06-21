@@ -24,8 +24,7 @@ body {
 /* used to control width of content in multiple containing elements (header, article, footer, etc) */
 .sizer {
   margin: 0 auto;
-  /*width: toUnit(1400);*/
-  width: 95%;
+  width: toUnit(1200);
 }
 
 
@@ -33,9 +32,39 @@ body {
 
 
 /* ---------- MEDIA QUERIES ---------- */
-@media only screen and (max-width: 1225px) {
-  body { font-size: 95%; }
+/* excuse these media queries, I added these last minute (I'd more than likely treat this differently potentially using mixins) */
+@media (max-width: 767px) {
+  body { font-size: 90% };
+  .sizer { width: 95%; }
+  .item { margin-right: auto; width: 100%; }
+  .item .item-picture img { width: auto; height: 100%; }
+  button { font-size: 200% !important; }
+  #main #content { display: block; width: 100%; }
+  #sidebar { display: block; width: 100%; }
+  .cart-item .cart-item-cta { display: block; position: relative; }
 }
-@media only screen and (max-width: 1155px) {
-  body { font-size: 85%; }
+@media (min-width: 767px) and (max-width: 940px) {
+  body { font-size: 80% };
+  .sizer { width: 95%; }
+  .item { width: 46%; }
+  .item .item-picture img { width: auto; height: 100%; }
+  #main #content { width: 70%; }
+  #sidebar { width: 30%; }
 }
+@media (min-width: 940px) and (max-width: 1020px) {
+  body { font-size: 80% };
+}
+@media (min-width: 1020px) and (max-width: 1120px) {
+  body { font-size: 85% };
+}
+@media (min-width: 1120px) and (max-width: 1500px) {
+  body { font-size: 100% };
+}
+@media (min-width: 1501px) {
+  .sizer { width: toUnit(1450); }
+  #main #content { width: 82%; }
+  #sidebar { width: 18%; }
+  .item { width: 22.8%; }
+}
+
+
